@@ -79,7 +79,7 @@ public class Main {
 
         allPlayers.forEach(System.out::println);
 
-        //4
+        // 4
         System.out.println("===== FILTERED AND SORTED");
 
         List<Player> filteredAndSortedPlayers = allPlayers.stream()
@@ -89,9 +89,10 @@ public class Main {
 
         filteredAndSortedPlayers.forEach(System.out::println);
 
+        // 5
         System.out.println("===== sortedPlayerDTOs");
         List<PlayerDTO> sortedPlayerDTOs = allPlayers.stream()
-                .map(player -> new PlayerDTO(player.getName(), player.getClub().getName(), player.getOverall()))
+                .map(s -> new PlayerDTO(s.getName(), s.getClub().getName(), s.getOverall()))
                 .sorted()
                 .toList();
 
