@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         // stream tests
 
@@ -97,6 +97,25 @@ public class Main {
                 .toList();
 
         sortedPlayerDTOs.forEach(System.out::println);
+
+        // 6
+
+        FileOutputStream fileOutputStream
+                = new FileOutputStream("yourfile.txt");
+        ObjectOutputStream objectOutputStream
+                = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(list);
+        objectOutputStream.flush();
+        objectOutputStream.close();
+
+        FileInputStream fileInputStream
+                = new FileInputStream("yourfile.txt");
+        ObjectInputStream objectInputStream
+                = new ObjectInputStream(fileInputStream);
+        List<Player> p2 = (List<Player>) objectInputStream.readObject();
+        objectInputStream.close();
+
+        System.out.println(p2);
 
     }
 }

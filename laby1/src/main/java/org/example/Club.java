@@ -3,11 +3,12 @@ package org.example;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Getter
-public class Club implements Comparable<Club> {
+public class Club implements Comparable<Club>, Serializable {
     private String name;
     private int stars;
     @Setter

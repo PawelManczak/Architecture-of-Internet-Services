@@ -2,8 +2,10 @@ package org.example;
 
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public class PlayerDTO implements Comparable<PlayerDTO> {
+public class PlayerDTO implements Comparable<PlayerDTO>, Serializable {
     private String name;
     private String clubName;
     private int overall;
