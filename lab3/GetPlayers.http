@@ -36,4 +36,12 @@ Accept: application/json
 GET http://localhost:8080/api/clubs/all
 Accept: application/json
 
-### CREATE A CLUB
+### create a club
+
+PUT http://localhost:8080/api/clubs/add
+Content-Type: application/json
+
+{
+  "clubName": "new club",
+  "stars": 3
+}

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Club;
 import com.example.demo.ClubService;
 import com.example.demo.DTO.GetClubResponse;
 import com.example.demo.DTO.GetClubsResponse;
@@ -39,7 +40,7 @@ public class ClubDefaultController implements ClubController {
 
     @Override
     public void createClub(PutClubRequest request) {
-
+        service.save(Club.builder().stars(request.getStars()).name(request.getClubName()).build());
     }
 
     @Override
