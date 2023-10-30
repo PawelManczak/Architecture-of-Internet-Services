@@ -46,11 +46,11 @@ public class PlayerDefaultController implements PlayerController {
 
     @Override
     public void updatePlayer(long id, PatchPlayerRequest request) {
-
+        //TODO
     }
 
     @Override
     public void deletePlayer(long id) {
-
+        service.delete(id);
     }
 }
