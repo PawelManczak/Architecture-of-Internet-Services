@@ -1,18 +1,22 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-@NoArgsConstructor
-@Entity
 @Getter
+@Setter
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString
+@EqualsAndHashCode
+@Entity
 public class Player implements Comparable<Player>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,18 +53,12 @@ public class Player implements Comparable<Player>, Serializable {
         if (this == obj) return true;
         if (!(obj instanceof Player)) return false;
         Player other = (Player) obj;
-        return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.club, other.club) &&
-                this.overall == other.overall;
+        return Objects.equals(this.name, other.name) && Objects.equals(this.club, other.club) && this.overall == other.overall;
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", club=" + club.getName() +
-                ", overall=" + overall +
-                '}';
+        return "Player{" + "name='" + name + '\'' + ", club=" + club.getName() + ", overall=" + overall + '}';
     }
 
     public static class Builder {
