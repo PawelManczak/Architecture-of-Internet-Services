@@ -22,7 +22,7 @@ public interface ClubController {
 
     @PatchMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    void updateClub(@RequestBody PatchPlayerRequest request);
+    void updateClub(@RequestBody PatchClubRequest request);
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deletePlayer(@PathVariable long id);

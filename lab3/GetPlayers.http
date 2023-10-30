@@ -37,11 +37,20 @@ GET http://localhost:8080/api/clubs/all
 Accept: application/json
 
 ### create a club
-
 PUT http://localhost:8080/api/clubs/add
 Content-Type: application/json
 
 {
+  "clubName": "new club",
+  "stars": 3
+}
+
+### update
+PATCH http://localhost:8080/api/clubs/update
+Content-Type: application/json
+
+{
+  "id": 1,
   "clubName": "new club",
   "stars": 3
 }

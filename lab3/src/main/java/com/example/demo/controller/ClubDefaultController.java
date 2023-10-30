@@ -4,10 +4,11 @@ import com.example.demo.Club;
 import com.example.demo.ClubService;
 import com.example.demo.DTO.GetClubResponse;
 import com.example.demo.DTO.GetClubsResponse;
-import com.example.demo.DTO.PatchPlayerRequest;
+import com.example.demo.DTO.PatchClubRequest;
 import com.example.demo.DTO.PutClubRequest;
-import com.example.demo.PlayerService;
-import com.example.demo.function.*;
+import com.example.demo.function.ClubToResponseFunction;
+import com.example.demo.function.ClubsToResponseFunction;
+import com.example.demo.function.RequestToPlayerFunction;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,9 +45,10 @@ public class ClubDefaultController implements ClubController {
     }
 
     @Override
-    public void updateClub(PatchPlayerRequest request) {
-
+    public void updateClub(PatchClubRequest request) {
+        service.update(request);
     }
+
 
     @Override
     public void deletePlayer(long id) {

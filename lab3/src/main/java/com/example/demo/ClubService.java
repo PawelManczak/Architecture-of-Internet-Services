@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.DTO.PatchClubRequest;
+import com.example.demo.DTO.PatchPlayerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,16 @@ public class ClubService {
 
     public List<Club> getAll() {
         return clubRepository.findAll().stream().toList();
+    }
+
+    public void update(PatchClubRequest newClubData) {
+        Club existingClub = clubRepository.findById(newClubData.getId()).orElse(null);
+
+
+        assert existingClub != null;
+        existingClub.setName(newClubData.getClubName());
+        existingClub.setStars(newClubData.getStars());
+        clubRepository.save(existingClub);
     }
 
 }
