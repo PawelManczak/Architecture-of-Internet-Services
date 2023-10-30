@@ -24,9 +24,9 @@ public interface PlayerController {
     @ResponseStatus(HttpStatus.OK)
     void createPlayer(@RequestBody PutPlayerRequest request);
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/update")
     @ResponseStatus(HttpStatus.OK)
-    void updatePlayer(@PathVariable("id") long id, @RequestBody PatchPlayerRequest request);
+    void updatePlayer(@RequestBody PatchPlayerRequest request);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

@@ -22,7 +22,12 @@ public class ClubService {
         return clubRepository.findById(clubId).orElse(null);
     }
 
-    public Club findByName(String name){return clubRepository.findByName(name).get(0);}
-    public List<Club> getAll(){return  clubRepository.findAll().stream().toList();}
+    public Club findByName(String name) {
+        return clubRepository.findByName(name).get(0);
+    }
+
+    public List<Club> getAll() {
+        return clubRepository.findAll().stream().toList();
+    }
 
 }

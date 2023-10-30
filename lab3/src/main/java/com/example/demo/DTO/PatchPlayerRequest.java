@@ -1,6 +1,5 @@
 package com.example.demo.DTO;
 
-import com.example.demo.Club;
 import lombok.*;
 
 @Getter
@@ -11,7 +10,8 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class PatchPlayerRequest {
+    private Long id;
     private String name;
-    private Club club;
+    private String clubName;
     private int overall;
 }

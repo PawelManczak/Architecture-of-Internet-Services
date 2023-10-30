@@ -17,3 +17,13 @@ Content-Type: application/json
   "overall": 80
 }
 
+### Update
+PATCH http://localhost:8080/api/players/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Nowe imię",
+  "clubName": "Club B",
+  "overall": 90
+}

@@ -49,8 +49,8 @@ public class PlayerDefaultController implements PlayerController {
     }
 
     @Override
-    public void updatePlayer(long id, PatchPlayerRequest request) {
-        //TODO
+    public void updatePlayer(PatchPlayerRequest request) {
+        service.updatePlayer(request);
     }
 
     @Override
