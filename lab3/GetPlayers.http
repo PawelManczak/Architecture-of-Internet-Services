@@ -1,0 +1,19 @@
+### GET Request to retrieve player with id == 1
+GET http://localhost:8080/api/players/1
+Accept: application/json
+
+### GET ALL PLAYERS
+GET http://localhost:8080/api/players/all
+Accept: application/json
+
+### CREATE A PLAYER
+
+PUT http://localhost:8080/api/players/add
+Content-Type: application/json
+
+{
+  "name": "John Best",
+  "clubName": "Club A",
+  "overall": 80
+}
+

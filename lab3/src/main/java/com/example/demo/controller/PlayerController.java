@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.GetPlayerResponse;
+import com.example.demo.DTO.GetPlayersResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
 import org.springframework.http.HttpStatus;
@@ -14,16 +15,20 @@ public interface PlayerController {
     @ResponseBody
     GetPlayerResponse getPlayer(@PathVariable("id") long id);
 
-    @GetMapping("/{id}")
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
+    GetPlayersResponse getPlayers();
+
+    @PutMapping("/add")
+    @ResponseStatus(HttpStatus.OK)
     void createPlayer(@RequestBody PutPlayerRequest request);
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void updatePlayer(@PathVariable("id") long id, @RequestBody PatchPlayerRequest request);
 
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deletePlayer(@PathVariable long id);
 }

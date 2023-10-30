@@ -12,6 +12,6 @@ import lombok.*;
 @EqualsAndHashCode
 public class PutPlayerRequest {
     private String name;
-    private Club club;
+    private String clubName;
     private int overall;
 }

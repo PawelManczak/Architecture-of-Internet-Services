@@ -21,6 +21,7 @@ public class Player implements Comparable<Player>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
+    @Getter
     private long uuid;
     @Column
     private String name;

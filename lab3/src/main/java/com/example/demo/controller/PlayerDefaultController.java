@@ -1,18 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.GetPlayerResponse;
+import com.example.demo.DTO.GetPlayersResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
 import com.example.demo.PlayerService;
 import com.example.demo.function.PlayerToResponseFunction;
 import com.example.demo.function.PlayersToResponseFunction;
 import com.example.demo.function.RequestToPlayerFunction;
-import com.example.demo.function.UpdateUserWithRequestFunction;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 @RestController
 @Log
@@ -36,6 +34,12 @@ public class PlayerDefaultController implements PlayerController {
     public GetPlayerResponse getPlayer(long id) {
         return playerToResponse.apply(service.findById(id));
 
+    }
+
+    @Override
+    public GetPlayersResponse getPlayers() {
+        System.out.println(playersToResponse.apply(service.getAll()));
+        return playersToResponse.apply(service.getAll());
     }
 
     @Override
