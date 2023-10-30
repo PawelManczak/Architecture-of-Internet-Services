@@ -42,4 +42,8 @@ public class ClubService {
         clubRepository.save(existingClub);
     }
 
+    public void delete(long id){
+        clubRepository.deleteById(id);
+    }
+
 }

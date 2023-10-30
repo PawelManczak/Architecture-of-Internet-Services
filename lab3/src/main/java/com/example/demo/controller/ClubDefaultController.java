@@ -51,7 +51,7 @@ public class ClubDefaultController implements ClubController {
 
 
     @Override
-    public void deletePlayer(long id) {
-
+    public void deleteClub(long id) {
+        service.delete(id);
     }
 }

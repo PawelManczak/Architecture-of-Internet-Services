@@ -25,7 +25,7 @@ public interface ClubController {
     void updateClub(@RequestBody PatchClubRequest request);
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    void deletePlayer(@PathVariable long id);
+    void deleteClub(@PathVariable long id);
 
 }
 

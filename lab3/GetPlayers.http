@@ -51,6 +51,9 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "clubName": "new club",
+  "clubName": "new updated club",
   "stars": 3
 }
+
+### delete
+DELETE http://localhost:8080/api/clubs/3
