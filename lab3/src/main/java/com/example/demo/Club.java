@@ -1,22 +1,27 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-@NoArgsConstructor
 @Getter
+@Setter
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString
+@EqualsAndHashCode
 @Entity
 public class Club implements Comparable<Club>, Serializable {
     @Id
-    @Column(name = "club_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    @Getter
     private long uuid;
     @Column
     private String name;
@@ -56,6 +61,7 @@ public class Club implements Comparable<Club>, Serializable {
     @Override
     public String toString() {
         return "Club{" +
+                "id='" + uuid + '\'' +
                 "name='" + name + '\'' +
                 ", stars=" + stars +
                 '}';

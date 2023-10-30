@@ -1,6 +1,9 @@
 package com.example.demo.DTO;
 
+import com.example.demo.Player;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -9,10 +12,9 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-
-public class GetPlayerResponse {
+public class GetClubResponse {
     private long uuid;
     private String name;
-    private String clubName;
-    private int overall;
+    private List<String> players;
+    private int stars;
 }

@@ -9,10 +9,7 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-
-public class GetPlayerResponse {
-    private long uuid;
-    private String name;
+public class PutClubRequest {
     private String clubName;
-    private int overall;
+    private int stars;
 }
