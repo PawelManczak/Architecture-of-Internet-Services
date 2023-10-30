@@ -6,10 +6,7 @@ import com.example.demo.DTO.GetClubsResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutClubRequest;
 import com.example.demo.PlayerService;
-import com.example.demo.function.ClubToResponseFunction;
-import com.example.demo.function.PlayerToResponseFunction;
-import com.example.demo.function.PlayersToResponseFunction;
-import com.example.demo.function.RequestToPlayerFunction;
+import com.example.demo.function.*;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,25 +17,24 @@ public class ClubDefaultController implements ClubController {
 
     private final ClubService service;
     private final ClubToResponseFunction clubToResponse;
-    private final PlayersToResponseFunction playersToResponse;
+    private final ClubsToResponseFunction clubsToResponse;
     private final RequestToPlayerFunction requestToPlayerFunction;
 
     @Autowired
-    public ClubDefaultController(ClubService service, PlayersToResponseFunction playersToResponse, ClubToResponseFunction clubToResponse, RequestToPlayerFunction requestToPlayerFunction) {
+    public ClubDefaultController(ClubService service, ClubsToResponseFunction clubsToResponse, ClubToResponseFunction clubToResponse, RequestToPlayerFunction requestToPlayerFunction) {
         this.service = service;
-        this.playersToResponse = playersToResponse;
+        this.clubsToResponse = clubsToResponse;
         this.clubToResponse = clubToResponse;
         this.requestToPlayerFunction = requestToPlayerFunction;
     }
     @Override
     public GetClubResponse getClub(long id) {
-        System.out.println("klkl " + service.findById(id));
         return clubToResponse.apply(service.findById(id));
     }
 
     @Override
     public GetClubsResponse getClubs() {
-        return null;
+        return clubsToResponse.apply(service.getAll());
     }
 
     @Override

@@ -31,3 +31,9 @@ Content-Type: application/json
 ### get club with id
 GET http://localhost:8080/api/clubs/1
 Accept: application/json
+
+### get all clubs
+GET http://localhost:8080/api/clubs/all
+Accept: application/json
+
+### CREATE A CLUB
