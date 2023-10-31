@@ -15,20 +15,20 @@ public interface PlayerController {
     @ResponseBody
     GetPlayerResponse getPlayer(@PathVariable("id") long id);
 
-    @GetMapping("/all")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     GetPlayersResponse getPlayers();
 
-    @PutMapping("/add")
+    @PutMapping("/")
     @ResponseStatus(HttpStatus.OK)
     void createPlayer(@RequestBody PutPlayerRequest request);
 
-    @PatchMapping("/update")
+    @PatchMapping("/")
     @ResponseStatus(HttpStatus.OK)
     void updatePlayer(@RequestBody PatchPlayerRequest request);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    void deletePlayer(@PathVariable long id);
+    void deletePlayer(@PathVariable("id") long id);
 }

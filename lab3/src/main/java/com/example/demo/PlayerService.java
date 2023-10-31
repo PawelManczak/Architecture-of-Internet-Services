@@ -3,7 +3,9 @@ package com.example.demo;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,7 +28,9 @@ public class PlayerService {
         Player existingPlayer = playerRepository.findById(newPlayerData.getId()).orElse(null);
 
 
-        assert existingPlayer != null;
+        if (existingPlayer == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Plyer Not Found");
+        }
         Club newClub = clubRepository.findByName(newPlayerData.getClubName()).get(0);
 
         existingPlayer.setName(newPlayerData.getName());
@@ -39,8 +43,17 @@ public class PlayerService {
         return playerRepository.findById(playerId).orElse(null);
     }
 
-    public List<Player> findAllFromClub(Club club){ return  playerRepository.findByClub(club);}
+    public List<Player> findAllFromClub(Club club) {
+        return playerRepository.findByClub(club);
+    }
 
-    public void delete(long playerId){ playerRepository.deleteById(playerId);}
-    public List<Player> getAll(){return playerRepository.findAll();}
+    public void delete(long playerId) {
+        System.out.println("ASDDASSDADSA " + playerId);
+        playerRepository.deleteById(playerId);
+
+    }
+
+    public List<Player> getAll() {
+        return playerRepository.findAll();
+    }
 }

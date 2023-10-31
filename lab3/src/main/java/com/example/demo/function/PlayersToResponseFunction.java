@@ -13,11 +13,12 @@ public class PlayersToResponseFunction implements Function<List<Player>, GetPlay
 
     @Override
     public GetPlayersResponse apply(List<Player> players) {
-        return GetPlayersResponse.builder().players(players.stream().
-                        map(player -> GetPlayersResponse.Player.builder()
+        return GetPlayersResponse.builder().players(players.stream()
+                        .map(player -> GetPlayersResponse.Player.builder()
                                 .id(player.getUuid())
                                 .name(player.getName())
-                                .clubName(player.getClub().getName()).build())
+                                .clubName(player.getClub() != null ? player.getClub().getName() : "")
+                                .build())
                         .toList())
                 .build();
     }

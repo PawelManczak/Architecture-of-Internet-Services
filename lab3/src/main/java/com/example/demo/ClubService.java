@@ -3,7 +3,9 @@ package com.example.demo;
 import com.example.demo.DTO.PatchClubRequest;
 import com.example.demo.DTO.PatchPlayerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,7 +27,15 @@ public class ClubService {
     }
 
     public Club findByName(String name) {
-        return clubRepository.findByName(name).get(0);
+
+        try{
+            Club club = clubRepository.findByName(name).get(0);
+            return club ;
+        }catch(Exception e){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Club Not Found", e);
+        }
+
     }
 
     public List<Club> getAll() {

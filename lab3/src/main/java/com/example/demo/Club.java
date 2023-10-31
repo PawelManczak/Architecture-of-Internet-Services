@@ -30,7 +30,7 @@ public class Club implements Comparable<Club>, Serializable {
 
     @Setter
     @Column
-    @OneToMany(mappedBy = "club")
+    @OneToMany(mappedBy = "club", cascade=CascadeType.ALL)
     private List<Player> players;
 
     private Club(Builder builder) {

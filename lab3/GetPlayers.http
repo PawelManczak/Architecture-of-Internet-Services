@@ -3,12 +3,12 @@ GET http://localhost:8080/api/players/1
 Accept: application/json
 
 ### GET ALL PLAYERS
-GET http://localhost:8080/api/players/all
+GET http://localhost:8080/api/players/
 Accept: application/json
 
 ### CREATE A PLAYER
 
-PUT http://localhost:8080/api/players/add
+PUT http://localhost:8080/api/players/
 Content-Type: application/json
 
 {
@@ -18,26 +18,30 @@ Content-Type: application/json
 }
 
 ### Update
-PATCH http://localhost:8080/api/players/update
+PATCH http://localhost:8080/api/players/
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "Nowe imię",
+  "id": 8,
+  "name": "best",
   "clubName": "Club B",
   "overall": 90
 }
 
+### delete
+DELETE http://localhost:8080/api/players/1
+Content-Type: application/json
+
 ### get club with id
-GET http://localhost:8080/api/clubs/1
+GET http://localhost:8080/api/clubs/3
 Accept: application/json
 
 ### get all clubs
-GET http://localhost:8080/api/clubs/all
+GET http://localhost:8080/api/clubs/
 Accept: application/json
 
 ### create a club
-PUT http://localhost:8080/api/clubs/add
+PUT http://localhost:8080/api/clubs/
 Content-Type: application/json
 
 {
@@ -46,7 +50,7 @@ Content-Type: application/json
 }
 
 ### update
-PATCH http://localhost:8080/api/clubs/update
+PATCH http://localhost:8080/api/clubs/
 Content-Type: application/json
 
 {
@@ -56,4 +60,4 @@ Content-Type: application/json
 }
 
 ### delete
-DELETE http://localhost:8080/api/clubs/3
+DELETE http://localhost:8080/api/clubs/1

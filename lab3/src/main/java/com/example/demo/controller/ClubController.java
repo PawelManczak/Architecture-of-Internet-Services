@@ -11,16 +11,16 @@ public interface ClubController {
     @ResponseBody
     GetClubResponse getClub(@PathVariable("id") long id);
 
-    @GetMapping("/all")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     GetClubsResponse getClubs();
 
-    @PutMapping("/add")
+    @PutMapping("/")
     @ResponseStatus(HttpStatus.OK)
     void createClub(@RequestBody PutClubRequest request);
 
-    @PatchMapping("/update")
+    @PatchMapping("/")
     @ResponseStatus(HttpStatus.OK)
     void updateClub(@RequestBody PatchClubRequest request);
     @DeleteMapping("/{id}")
