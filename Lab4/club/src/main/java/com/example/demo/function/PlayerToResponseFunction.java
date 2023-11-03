@@ -1,7 +1,7 @@
 package com.example.demo.function;
 
 import com.example.demo.DTO.GetPlayerResponse;
-import com.example.demo.Player;
+import com.example.demo.entity.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

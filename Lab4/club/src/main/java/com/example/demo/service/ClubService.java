@@ -1,7 +1,8 @@
-package com.example.demo;
+package com.example.demo.service;
 
+import com.example.demo.repository.ClubRepository;
 import com.example.demo.DTO.PatchClubRequest;
-import com.example.demo.DTO.PatchPlayerRequest;
+import com.example.demo.entity.Club;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,19 +24,9 @@ public class ClubService {
     }
 
     public Club findById(long clubId) {
-        return clubRepository.findById(clubId).orElse(null);
-    }
-
-    public Club findByName(String name) {
-
-        try{
-            Club club = clubRepository.findByName(name).get(0);
-            return club ;
-        }catch(Exception e){
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Club Not Found", e);
-        }
-
+        Club club = clubRepository.findById(clubId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        System.out.println("././././ " + club.getName());
+        return club;
     }
 
     public List<Club> getAll() {
@@ -43,16 +34,14 @@ public class ClubService {
     }
 
     public void update(PatchClubRequest newClubData) {
-        Club existingClub = clubRepository.findById(newClubData.getId()).orElse(null);
+        Club existingClub = clubRepository.findById(newClubData.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-
-        assert existingClub != null;
         existingClub.setName(newClubData.getClubName());
         existingClub.setStars(newClubData.getStars());
         clubRepository.save(existingClub);
     }
 
-    public void delete(long id){
+    public void delete(long id) {
         clubRepository.deleteById(id);
     }
 

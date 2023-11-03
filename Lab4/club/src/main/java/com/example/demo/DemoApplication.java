@@ -1,13 +1,11 @@
 package com.example.demo;
 
-import com.sun.tools.javac.Main;
+import com.example.demo.intialize.DataInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Scanner;
 
 @SpringBootApplication()
 public class DemoApplication {
@@ -18,6 +16,9 @@ public class DemoApplication {
 		DataInitializer dataInitializer = context.getBean(DataInitializer.class);
 		dataInitializer.initializeSampleData();
 
+
+		Scanner obj = new Scanner(System.in);
+		int x = obj.nextInt();
 
 		/*List<Club> clubs = clubRepository.findByName("Club A");
 		System.out.println("Clubs with name 'Club A':");

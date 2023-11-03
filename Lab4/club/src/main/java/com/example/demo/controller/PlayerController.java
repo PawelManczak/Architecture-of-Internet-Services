@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.GetPlayerResponse;
-import com.example.demo.DTO.GetPlayersResponse;
-import com.example.demo.DTO.PatchPlayerRequest;
-import com.example.demo.DTO.PutPlayerRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,19 +12,7 @@ public interface PlayerController {
     @ResponseBody
     GetPlayerResponse getPlayer(@PathVariable("id") long id);
 
-    @GetMapping("/")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    GetPlayersResponse getPlayers();
-
-    @PutMapping("/")
-    @ResponseStatus(HttpStatus.OK)
-    void createPlayer(@RequestBody PutPlayerRequest request);
-
-    @PatchMapping("/")
-    @ResponseStatus(HttpStatus.OK)
-    void updatePlayer(@RequestBody PatchPlayerRequest request);
-
+    // todo idk it should stay here
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deletePlayer(@PathVariable("id") long id);

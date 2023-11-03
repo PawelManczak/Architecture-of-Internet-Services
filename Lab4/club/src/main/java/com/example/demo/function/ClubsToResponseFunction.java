@@ -1,6 +1,6 @@
 package com.example.demo.function;
 
-import com.example.demo.Club;
+import com.example.demo.entity.Club;
 import com.example.demo.DTO.GetClubsResponse;
 import org.springframework.stereotype.Component;
 
