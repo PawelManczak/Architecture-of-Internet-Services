@@ -1,7 +1,7 @@
 package com.example.demo.function;
 
 import com.example.demo.DTO.PutPlayerRequest;
-import com.example.demo.Player;
+import com.example.demo.entity.Player;
 
 import java.util.function.BiFunction;
 

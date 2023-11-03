@@ -32,32 +32,3 @@ Content-Type: application/json
 DELETE http://localhost:8080/api/players/1
 Content-Type: application/json
 
-### get club with id
-GET http://localhost:8080/api/clubs/3
-Accept: application/json
-
-### get all clubs
-GET http://localhost:8080/api/clubs/
-Accept: application/json
-
-### create a club
-PUT http://localhost:8080/api/clubs/
-Content-Type: application/json
-
-{
-  "clubName": "new club",
-  "stars": 3
-}
-
-### update
-PATCH http://localhost:8080/api/clubs/
-Content-Type: application/json
-
-{
-  "id": 1,
-  "clubName": "new updated club",
-  "stars": 3
-}
-
-### delete
-DELETE http://localhost:8080/api/clubs/1

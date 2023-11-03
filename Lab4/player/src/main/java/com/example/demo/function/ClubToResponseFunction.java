@@ -1,8 +1,8 @@
 package com.example.demo.function;
 
-import com.example.demo.Club;
+import com.example.demo.entity.Club;
 import com.example.demo.DTO.GetClubResponse;
-import com.example.demo.Player;
+import com.example.demo.entity.Player;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

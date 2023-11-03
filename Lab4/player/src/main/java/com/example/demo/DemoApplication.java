@@ -1,13 +1,9 @@
 package com.example.demo;
 
-import com.sun.tools.javac.Main;
+import com.example.demo.initialize.DataInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
-
-import java.util.List;
-import java.util.UUID;
 
 @SpringBootApplication()
 public class DemoApplication {

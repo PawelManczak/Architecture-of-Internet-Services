@@ -12,6 +12,6 @@ import lombok.*;
 public class PatchPlayerRequest {
     private Long id;
     private String name;
-    private String clubName;
+    private Long clubId;
     private int overall;
 }

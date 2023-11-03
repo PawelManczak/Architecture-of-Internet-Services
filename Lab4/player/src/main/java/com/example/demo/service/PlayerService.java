@@ -1,7 +1,10 @@
-package com.example.demo;
+package com.example.demo.service;
 
+import com.example.demo.entity.Club;
+import com.example.demo.repository.ClubRepository;
 import com.example.demo.DTO.PatchPlayerRequest;
-import com.example.demo.DTO.PutPlayerRequest;
+import com.example.demo.entity.Player;
+import com.example.demo.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,18 +23,14 @@ public class PlayerService {
         this.clubRepository = clubRepository;
     }
 
-    public Player save(Player player) {
-        return playerRepository.save(player);
+    public void save(Player player) {
+        playerRepository.save(player);
     }
 
     public void updatePlayer(PatchPlayerRequest newPlayerData) {
-        Player existingPlayer = playerRepository.findById(newPlayerData.getId()).orElse(null);
+        Player existingPlayer = playerRepository.findById(newPlayerData.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-
-        if (existingPlayer == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Plyer Not Found");
-        }
-        Club newClub = clubRepository.findByName(newPlayerData.getClubName()).get(0);
+        Club newClub = clubRepository.findById(newPlayerData.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         existingPlayer.setName(newPlayerData.getName());
         existingPlayer.setClub(newClub);
@@ -40,7 +39,7 @@ public class PlayerService {
     }
 
     public Player findById(long playerId) {
-        return playerRepository.findById(playerId).orElse(null);
+        return playerRepository.findById(playerId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public List<Player> findAllFromClub(Club club) {

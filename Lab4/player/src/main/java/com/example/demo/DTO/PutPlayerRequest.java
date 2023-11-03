@@ -1,6 +1,5 @@
 package com.example.demo.DTO;
 
-import com.example.demo.Club;
 import lombok.*;
 
 @Getter

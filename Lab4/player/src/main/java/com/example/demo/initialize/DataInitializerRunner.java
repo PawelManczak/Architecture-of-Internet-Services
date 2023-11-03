@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.initialize;
 
+import com.example.demo.initialize.DataInitializer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

@@ -1,13 +1,11 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.UUID;
 
 @Getter
 @Setter

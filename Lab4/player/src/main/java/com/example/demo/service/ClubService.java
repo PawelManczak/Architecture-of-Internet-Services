@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.service;
 
-import com.example.demo.DTO.PatchClubRequest;
-import com.example.demo.DTO.PatchPlayerRequest;
+import com.example.demo.entity.Club;
+import com.example.demo.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class ClubService {
         this.clubRepository = clubRepository;
     }
 
-    public Club save(Club club) {
-        return clubRepository.save(club);
+    public void save(Club club) {
+        clubRepository.save(club);
     }
 
     public Club findById(long clubId) {
@@ -37,23 +37,8 @@ public class ClubService {
         }
 
     }
-
     public List<Club> getAll() {
         return clubRepository.findAll().stream().toList();
-    }
-
-    public void update(PatchClubRequest newClubData) {
-        Club existingClub = clubRepository.findById(newClubData.getId()).orElse(null);
-
-
-        assert existingClub != null;
-        existingClub.setName(newClubData.getClubName());
-        existingClub.setStars(newClubData.getStars());
-        clubRepository.save(existingClub);
-    }
-
-    public void delete(long id){
-        clubRepository.deleteById(id);
     }
 
 }

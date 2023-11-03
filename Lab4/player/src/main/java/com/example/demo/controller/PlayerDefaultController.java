@@ -4,7 +4,7 @@ import com.example.demo.DTO.GetPlayerResponse;
 import com.example.demo.DTO.GetPlayersResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
-import com.example.demo.PlayerService;
+import com.example.demo.service.PlayerService;
 import com.example.demo.function.PlayerToResponseFunction;
 import com.example.demo.function.PlayersToResponseFunction;
 import com.example.demo.function.RequestToPlayerFunction;
@@ -34,11 +34,7 @@ public class PlayerDefaultController implements PlayerController {
 
     @Override
     public GetPlayerResponse getPlayer(long id) {
-        try {
-            return playerToResponse.apply(service.findById(id));
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found", e);
-        }
+        return playerToResponse.apply(service.findById(id));
     }
 
     @Override

@@ -1,17 +1,12 @@
 package com.example.demo.function;
 
-import com.example.demo.Club;
-import com.example.demo.ClubService;
-import com.example.demo.DTO.PatchPlayerRequest;
+import com.example.demo.entity.Club;
+import com.example.demo.service.ClubService;
 import com.example.demo.DTO.PutPlayerRequest;
-import com.example.demo.Player;
-import com.example.demo.PlayerService;
+import com.example.demo.entity.Player;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 @Component
