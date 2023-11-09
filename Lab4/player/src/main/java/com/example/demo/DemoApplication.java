@@ -1,44 +1,24 @@
 package com.example.demo;
 
 import com.example.demo.initialize.DataInitializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication()
 public class DemoApplication {
 
-	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
-		DataInitializer dataInitializer = context.getBean(DataInitializer.class);
-		dataInitializer.initializeSampleData();
-
-
-		/*List<Club> clubs = clubRepository.findByName("Club A");
-		System.out.println("Clubs with name 'Club A':");
-		clubs.forEach(System.out::println);/*
-
-		Club clubA = clubs.get(0);
-		List<Player> playersInClubA = playerRepository.findByClub(clubA);
-		System.out.println("Players in 'Club A':");
-		playersInClubA.forEach(System.out::println);
-
-		// 3
-		Club newClub = new Club.Builder("Club A")
-				.withStars(4)
-				.build();
-		clubRepository.save(newClub);
-
-		ClubService clubService = context.getBean(ClubService.class);
-		clubService.save(newClub);
-		long clubId = newClub.getUuid();
-		Club retrievedClub = clubService.findById(clubId);
-		System.out.println(retrievedClub);*/
-
-
-		// 4
-		SpringApplication.exit(context);
-	}
+  /*  @Bean
+    public RestTemplate restTemplate(@Value("${fifa.club.url}") String baseUrl) {
+        return new RestTemplateBuilder().rootUri(baseUrl).build();
+    }*/
 
 }

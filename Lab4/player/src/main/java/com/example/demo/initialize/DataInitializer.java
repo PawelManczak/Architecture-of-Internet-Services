@@ -40,6 +40,6 @@ public class DataInitializer implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        initializeSampleData();
+        //initializeSampleData();
     }
 }

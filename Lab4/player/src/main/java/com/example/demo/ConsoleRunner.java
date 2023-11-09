@@ -1,4 +1,4 @@
-package com.example.demo;
+/*package com.example.demo;
 
 import com.example.demo.entity.Club;
 import com.example.demo.entity.Player;
@@ -95,3 +95,4 @@ public class ConsoleRunner implements CommandLineRunner {
     }
 
 }
+*/

@@ -1,14 +1,14 @@
 ### GET Request to retrieve player with id == 1
-GET http://localhost:8080/api/players/1
+GET http://localhost:8083/api/players/1
 Accept: application/json
 
 ### GET ALL PLAYERS
-GET http://localhost:8080/api/players/
+GET http://localhost:8083/api/players/
 Accept: application/json
 
 ### CREATE A PLAYER
 
-PUT http://localhost:8080/api/players/
+PUT http://localhost:8083/api/players/
 Content-Type: application/json
 
 {
@@ -18,30 +18,30 @@ Content-Type: application/json
 }
 
 ### Update
-PATCH http://localhost:8080/api/players/
+PATCH http://localhost:8083/api/players/
 Content-Type: application/json
 
 {
-  "id": 8,
+  "id": 1,
   "name": "best",
   "clubName": "Club B",
   "overall": 90
 }
 
 ### delete
-DELETE http://localhost:8080/api/players/1
+DELETE http://localhost:8083/api/players/1
 Content-Type: application/json
 
 ### get club with id
-GET http://localhost:8080/api/clubs/3
+GET http://localhost:8083/api/clubs/3
 Accept: application/json
 
 ### get all clubs
-GET http://localhost:8080/api/clubs/
+GET http://localhost:8083/api/clubs/
 Accept: application/json
 
 ### create a club
-PUT http://localhost:8080/api/clubs/
+PUT http://localhost:8083/api/clubs/
 Content-Type: application/json
 
 {
@@ -50,7 +50,7 @@ Content-Type: application/json
 }
 
 ### update
-PATCH http://localhost:8080/api/clubs/
+PATCH http://localhost:8083/api/clubs/
 Content-Type: application/json
 
 {
@@ -60,4 +60,4 @@ Content-Type: application/json
 }
 
 ### delete
-DELETE http://localhost:8080/api/clubs/1
+DELETE http://localhost:8083/api/clubs/1

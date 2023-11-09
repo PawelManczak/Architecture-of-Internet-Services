@@ -24,22 +24,13 @@ public class DataInitializer implements InitializingBean {
         Club newClub = new Club.Builder("Club A").withStars(4).build();
         Club newClubB = new Club.Builder("Club B").withStars(5).build();
 
-        Player newPlayer = new Player.Builder("New Player0").withClub(newClub).withOverall(85).build();
-        Player newPlayer1 = new Player.Builder("New Player1").withClub(newClub).withOverall(80).build();
-        Player newPlayer2 = new Player.Builder("New Player2").withClub(newClub).withOverall(89).build();
-        Player newPlayer3 = new Player.Builder("New Player3").withClub(newClubB).withOverall(95).build();
         clubService.save(newClub);
         clubService.save(newClubB);
 
-
-        playerService.save(newPlayer);
-        playerService.save(newPlayer1);
-        playerService.save(newPlayer2);
-        playerService.save(newPlayer3);
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        initializeSampleData();
+
     }
 }

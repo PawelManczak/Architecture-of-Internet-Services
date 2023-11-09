@@ -1,48 +1,47 @@
 package com.example.demo;
 
-import com.sun.tools.javac.Main;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.ApplicationContext;
-
-import java.util.List;
-import java.util.UUID;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication()
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
+	}
 
-		DataInitializer dataInitializer = context.getBean(DataInitializer.class);
-		dataInitializer.initializeSampleData();
-
-
-		/*List<Club> clubs = clubRepository.findByName("Club A");
-		System.out.println("Clubs with name 'Club A':");
-		clubs.forEach(System.out::println);/*
-
-		Club clubA = clubs.get(0);
-		List<Player> playersInClubA = playerRepository.findByClub(clubA);
-		System.out.println("Players in 'Club A':");
-		playersInClubA.forEach(System.out::println);
-
-		// 3
-		Club newClub = new Club.Builder("Club A")
-				.withStars(4)
+	@Bean
+	public RouteLocator routeLocator(
+			RouteLocatorBuilder builder,
+			@Value("${fifa.player.url}") String playerUrl,
+			@Value("${fifa.club.url}") String clubUrl,
+			@Value("${fifa.gateway.host}") String host
+	) {
+		return builder
+				.routes()
+				.route("players", route -> route
+						.host(host)
+						.and()
+						.path(
+								"/api/players/{uuid}",
+								"/api/players"
+						)
+						.uri(playerUrl)
+				)
+				.route("clubs", route -> route
+						.host(host)
+						.and()
+						.path(
+								"/api/clubs/{uuid}",
+								"/api/clubs"
+						)
+						.uri(clubUrl)
+				)
 				.build();
-		clubRepository.save(newClub);
-
-		ClubService clubService = context.getBean(ClubService.class);
-		clubService.save(newClub);
-		long clubId = newClub.getUuid();
-		Club retrievedClub = clubService.findById(clubId);
-		System.out.println(retrievedClub);*/
-
-
-		// 4
-		SpringApplication.exit(context);
 	}
 
 }
