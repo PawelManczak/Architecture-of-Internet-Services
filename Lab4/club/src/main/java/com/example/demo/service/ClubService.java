@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.event.repository.ClubEventRepository;
 import com.example.demo.repository.ClubRepository;
 import com.example.demo.DTO.PatchClubRequest;
 import com.example.demo.entity.Club;
@@ -13,10 +14,12 @@ import java.util.List;
 @Service
 public class ClubService {
     private final ClubRepository clubRepository;
+    private final ClubEventRepository clubEventRepository;
 
     @Autowired
-    public ClubService(ClubRepository clubRepository) {
+    public ClubService(ClubRepository clubRepository, ClubEventRepository clubEventRepository) {
         this.clubRepository = clubRepository;
+        this.clubEventRepository = clubEventRepository;
     }
 
     public Club save(Club club) {
@@ -43,6 +46,7 @@ public class ClubService {
 
     public void delete(long id) {
         clubRepository.deleteById(id);
+        clubEventRepository.delete(id);
     }
 
 }

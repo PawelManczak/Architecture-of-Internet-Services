@@ -11,5 +11,9 @@ public interface ClubController {
     @ResponseBody
     GetClubResponse getClub(@PathVariable("id") long id);
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    void deleteClub(@PathVariable long id);
+
 }
 

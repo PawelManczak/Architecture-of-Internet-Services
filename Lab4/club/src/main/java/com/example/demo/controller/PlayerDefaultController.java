@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+/*package com.example.demo.controller;
 
 import com.example.demo.DTO.GetPlayerResponse;
 import com.example.demo.function.PlayerToResponseFunction;
@@ -37,4 +37,4 @@ public class PlayerDefaultController implements PlayerController {
     public void deletePlayer(long id) {
         service.delete(id);
     }
-}
+}*/

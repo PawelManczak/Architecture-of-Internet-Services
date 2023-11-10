@@ -24,5 +24,8 @@ public class ClubDefaultController implements ClubController {
         return clubToResponse.apply(service.findById(id));
     }
 
-
+    @Override
+    public void deleteClub(long id) {
+        service.delete(id);
+    }
 }

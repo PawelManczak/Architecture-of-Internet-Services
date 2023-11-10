@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+/*package com.example.demo.controller;
 
 import com.example.demo.DTO.GetPlayerResponse;
 import org.springframework.http.HttpStatus;
@@ -17,3 +17,4 @@ public interface PlayerController {
     @ResponseStatus(HttpStatus.OK)
     void deletePlayer(@PathVariable("id") long id);
 }
+*/
