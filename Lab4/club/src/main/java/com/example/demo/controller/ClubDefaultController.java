@@ -27,7 +27,7 @@ public class ClubDefaultController implements ClubController {
     }
     @Override
     public GetClubResponse getClub(long id) {
-        return clubToResponse.apply(service.findById(id));
+        return clubToResponse.apply(service.findById(id), service.getPlayersName(id));
     }
 
     @Override

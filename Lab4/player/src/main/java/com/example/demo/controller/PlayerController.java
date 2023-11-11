@@ -4,6 +4,7 @@ import com.example.demo.DTO.GetPlayerResponse;
 import com.example.demo.DTO.GetPlayersResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
+import com.example.demo.entity.Club;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,10 @@ public interface PlayerController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     GetPlayersResponse getPlayers();
+    @GetMapping("/club/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    GetPlayersResponse getPlayersFromClub(@PathVariable("id") long id);
 
     @PutMapping("/")
     @ResponseStatus(HttpStatus.OK)

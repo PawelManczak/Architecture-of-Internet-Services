@@ -4,6 +4,8 @@ import com.example.demo.DTO.GetPlayerResponse;
 import com.example.demo.DTO.GetPlayersResponse;
 import com.example.demo.DTO.PatchPlayerRequest;
 import com.example.demo.DTO.PutPlayerRequest;
+import com.example.demo.entity.Club;
+import com.example.demo.function.UpdatePlayerWithRequestFunction;
 import com.example.demo.service.PlayerService;
 import com.example.demo.function.PlayerToResponseFunction;
 import com.example.demo.function.PlayersToResponseFunction;
@@ -23,13 +25,15 @@ public class PlayerDefaultController implements PlayerController {
     private final PlayersToResponseFunction playersToResponse;
     private final RequestToPlayerFunction requestToPlayerFunction;
 
+    private final UpdatePlayerWithRequestFunction updatePlayerWithRequestFunction;
 
     @Autowired
-    public PlayerDefaultController(PlayerService service, PlayersToResponseFunction playersToResponse, PlayerToResponseFunction playerToResponse, RequestToPlayerFunction requestToPlayerFunction) {
+    public PlayerDefaultController(PlayerService service, PlayersToResponseFunction playersToResponse, PlayerToResponseFunction playerToResponse, RequestToPlayerFunction requestToPlayerFunction, UpdatePlayerWithRequestFunction updatePlayerWithRequestFunction) {
         this.service = service;
         this.playersToResponse = playersToResponse;
         this.playerToResponse = playerToResponse;
         this.requestToPlayerFunction = requestToPlayerFunction;
+        this.updatePlayerWithRequestFunction = updatePlayerWithRequestFunction;
     }
 
     @Override
@@ -43,14 +47,20 @@ public class PlayerDefaultController implements PlayerController {
     }
 
     @Override
+    public GetPlayersResponse getPlayersFromClub(long id) {
+        return  playersToResponse.apply(service.findAllFromClub(id));
+    }
+
+    @Override
     public void createPlayer(PutPlayerRequest request) {
+        System.out.println("cjsad " + request.getClubId());
         service.save(requestToPlayerFunction.apply(request));
 
     }
 
     @Override
     public void updatePlayer(PatchPlayerRequest request) {
-        service.updatePlayer(request);
+        service.updatePlayer(updatePlayerWithRequestFunction.apply(request));
     }
 
     @Override

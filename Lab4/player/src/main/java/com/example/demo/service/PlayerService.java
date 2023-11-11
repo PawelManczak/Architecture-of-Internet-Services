@@ -27,15 +27,9 @@ public class PlayerService {
         playerRepository.save(player);
     }
 
-    public void updatePlayer(PatchPlayerRequest newPlayerData) {
-        Player existingPlayer = playerRepository.findById(newPlayerData.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public void updatePlayer(Player player) {
 
-        Club newClub = clubRepository.findById(newPlayerData.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        existingPlayer.setName(newPlayerData.getName());
-        existingPlayer.setClub(newClub);
-        existingPlayer.setOverall(newPlayerData.getOverall());
-        playerRepository.save(existingPlayer);
+        playerRepository.save(player);
     }
 
     public Player findById(long playerId) {
@@ -44,6 +38,10 @@ public class PlayerService {
 
     public List<Player> findAllFromClub(Club club) {
         return playerRepository.findByClub(club);
+    }
+
+    public List<Player> findAllFromClub(Long clubId) {
+        return playerRepository.findByClubUuid(clubId);
     }
 
     public void delete(long playerId) {

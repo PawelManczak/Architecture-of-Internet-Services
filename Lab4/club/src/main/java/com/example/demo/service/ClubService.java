@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.DTO.GetPlayersResponse;
+import com.example.demo.DTO.PutClubRequest;
 import com.example.demo.event.repository.ClubEventRepository;
 import com.example.demo.repository.ClubRepository;
 import com.example.demo.DTO.PatchClubRequest;
@@ -22,14 +24,20 @@ public class ClubService {
         this.clubEventRepository = clubEventRepository;
     }
 
-    public Club save(Club club) {
-        return clubRepository.save(club);
+    public void save(Club club) {
+        clubRepository.save(club);
+        clubEventRepository.create(PutClubRequest.builder().clubName(club.getName()).stars(club.getStars()).build());
     }
 
+    public void saveInitialize(Club club) {
+        clubRepository.save(club);
+    }
     public Club findById(long clubId) {
         Club club = clubRepository.findById(clubId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        System.out.println("././././ " + club.getName());
         return club;
+    }
+    public List<String> getPlayersName(long clubId){
+        return clubEventRepository.getPlayers(clubId).getPlayers().stream().map(GetPlayersResponse.Player::getName).toList();
     }
 
     public List<Club> getAll() {
@@ -42,6 +50,7 @@ public class ClubService {
         existingClub.setName(newClubData.getClubName());
         existingClub.setStars(newClubData.getStars());
         clubRepository.save(existingClub);
+        clubEventRepository.update(newClubData);
     }
 
     public void delete(long id) {

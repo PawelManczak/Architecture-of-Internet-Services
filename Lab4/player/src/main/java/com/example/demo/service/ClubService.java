@@ -24,9 +24,7 @@ public class ClubService {
     }
 
     public Club findById(long clubId) {
-        Club club = clubRepository.findById(clubId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        System.out.println("././././ " + club.getName());
-        return club;
+        return clubRepository.findById(clubId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public Club findByName(String name){

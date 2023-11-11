@@ -12,25 +12,23 @@ import org.springframework.stereotype.Component;
 public class DataInitializer implements InitializingBean {
 
     private final ClubService clubService;
-    private final PlayerService playerService;
 
     @Autowired
     public DataInitializer(ClubService clubService, PlayerService playerService) {
         this.clubService = clubService;
-        this.playerService = playerService;
     }
 
     public void initializeSampleData() {
-        Club newClub = new Club.Builder("Club A").withStars(4).build();
-        Club newClubB = new Club.Builder("Club B").withStars(5).build();
+        Club newClub = Club.builder().uuid(1).name("Club A").stars(4).build();
+        Club newClubB = Club.builder().uuid(2).name("Club B").stars(5).build();
 
-        clubService.save(newClub);
-        clubService.save(newClubB);
+        clubService.saveInitialize(newClub);
+        clubService.saveInitialize(newClubB);
 
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
+       initializeSampleData();
     }
 }

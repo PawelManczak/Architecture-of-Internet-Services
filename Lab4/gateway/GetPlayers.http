@@ -12,8 +12,8 @@ PUT http://localhost:8083/api/players/
 Content-Type: application/json
 
 {
-  "name": "John Best",
-  "clubName": "Club A",
+  "name": "John Best1",
+  "clubId": 3,
   "overall": 80
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 {
   "id": 1,
   "name": "best",
-  "clubName": "Club B",
+  "clubId": 1,
   "overall": 90
 }
 
@@ -61,3 +61,8 @@ Content-Type: application/json
 
 ### delete
 DELETE http://localhost:8083/api/clubs/1
+
+###
+GET http://localhost:8081/api/players/club/1
+Accept: application/json
+

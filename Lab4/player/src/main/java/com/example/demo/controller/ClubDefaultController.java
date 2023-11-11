@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.GetClubResponse;
+import com.example.demo.DTO.PatchClubRequest;
+import com.example.demo.DTO.PutClubRequest;
+import com.example.demo.entity.Club;
 import com.example.demo.function.ClubToResponseFunction;
 import com.example.demo.service.ClubService;
 import lombok.extern.java.Log;
@@ -13,6 +16,7 @@ public class ClubDefaultController implements ClubController {
 
     private final ClubService service;
     private final ClubToResponseFunction clubToResponse;
+
 
     @Autowired
     public ClubDefaultController(ClubService service, ClubToResponseFunction clubToResponse) {
@@ -27,5 +31,15 @@ public class ClubDefaultController implements ClubController {
     @Override
     public void deleteClub(long id) {
         service.delete(id);
+    }
+
+    @Override
+    public void updateClub(PatchClubRequest request) {
+        service.update(request);
+    }
+
+    @Override
+    public void saveClub(PutClubRequest request) {
+        service.save(Club.builder().name(request.getClubName()).stars(request.getStars()).build());
     }
 }

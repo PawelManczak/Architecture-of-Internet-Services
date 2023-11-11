@@ -12,7 +12,7 @@ import java.util.function.Function;
 @Component
 public class RequestToPlayerFunction implements Function<PutPlayerRequest, Player> {
 
-    private ClubService clubService;
+    private final ClubService clubService;
 
     @Autowired
     public RequestToPlayerFunction(ClubService service) {
@@ -21,12 +21,13 @@ public class RequestToPlayerFunction implements Function<PutPlayerRequest, Playe
     @Override
     public Player apply(PutPlayerRequest putPlayerRequest) {
         System.out.println("inside player fun: " + putPlayerRequest.toString());
-        Club club = clubService.findByName(putPlayerRequest.getClubName());
-        System.out.println(club.toString());
+        Club club = clubService.findById(putPlayerRequest.getClubId());
+        System.out.println("taki rozmiar " + clubService.getAll().size());
+        System.out.println(club.getName());
 
         return Player.builder()
                 .name(putPlayerRequest.getName())
-                .club(clubService.findByName(putPlayerRequest.getClubName()))
+                .club(club)
                 .overall(putPlayerRequest.getOverall())
                 .build();
     }

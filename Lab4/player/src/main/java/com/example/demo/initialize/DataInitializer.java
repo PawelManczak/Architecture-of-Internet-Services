@@ -21,13 +21,14 @@ public class DataInitializer implements InitializingBean {
     }
 
     public void initializeSampleData() {
-        Club newClub = new Club.Builder("Club A").withStars(4).build();
-        Club newClubB = new Club.Builder("Club B").withStars(5).build();
+        Club newClub = Club.builder().uuid(1).name("Club A").stars(4).build();
+        Club newClubB = Club.builder().uuid(2).name("Club B").stars(5).build();
 
-        Player newPlayer = new Player.Builder("New Player0").withClub(newClub).withOverall(85).build();
-        Player newPlayer1 = new Player.Builder("New Player1").withClub(newClub).withOverall(80).build();
-        Player newPlayer2 = new Player.Builder("New Player2").withClub(newClub).withOverall(89).build();
-        Player newPlayer3 = new Player.Builder("New Player3").withClub(newClubB).withOverall(95).build();
+        Player newPlayer = Player.builder().uuid(1).name("New Player0").club(newClub).overall(85).build();
+        Player newPlayer1 = Player.builder().uuid(2).name("New Player1").club(newClub).overall(80).build();
+        Player newPlayer2 = Player.builder().uuid(3).name("New Player2").club(newClub).overall(89).build();
+        Player newPlayer3 = Player.builder().uuid(4).name("New Player3").club(newClubB).overall(95).build();
+
         clubService.save(newClub);
         clubService.save(newClubB);
 
@@ -40,6 +41,6 @@ public class DataInitializer implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        //initializeSampleData();
+        initializeSampleData();
     }
 }

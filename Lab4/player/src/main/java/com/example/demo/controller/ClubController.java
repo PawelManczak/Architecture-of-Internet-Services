@@ -14,6 +14,13 @@ public interface ClubController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deleteClub(@PathVariable long id);
+    @PatchMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    void updateClub(@RequestBody PatchClubRequest request);
+
+    @PutMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    void saveClub(@RequestBody PutClubRequest request);
 
 }
 
