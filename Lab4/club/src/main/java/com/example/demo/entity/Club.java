@@ -24,8 +24,6 @@ public class Club implements Comparable<Club>, Serializable {
     private String name;
     @Column
     private int stars;
-    @OneToMany(mappedBy = "club", cascade=CascadeType.ALL)
-    private List<Player> players;
 
 
 

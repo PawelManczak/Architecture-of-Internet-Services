@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo (1)" />
         <module name="demo (2) (org.springframework.boot)" />
+        <module name="demo (3)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
