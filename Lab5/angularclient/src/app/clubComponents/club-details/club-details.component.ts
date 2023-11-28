@@ -6,6 +6,7 @@ import {ClubDetails} from "../../club-model/club-details";
 import {PatchClubRequest} from "../../club-model/patch-club-request";
 import {PlayerService} from "../../services/player-service.service";
 import {PlayersFromClub} from "../../players-from-club";
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-club-details',
@@ -17,23 +18,31 @@ export class ClubDetailsComponent {
     players: PlayersFromClub | undefined
     id = -1
 
-    constructor(private route: ActivatedRoute, private clubService: ClubService, private playerService: PlayerService, private router: Router) {
-
+    constructor(
+        private route: ActivatedRoute,
+        private clubService: ClubService,
+        private playerService: PlayerService,
+        private router: Router,
+        private location: Location
+    ) {
     }
 
-
-    goToAddPlayer(){
+    goToAddPlayer() {
         this.router.navigate([`adduser/${this.id}`])
     }
 
-    goToEditPlayer(userId: number){
+    goToEditPlayer(userId: number) {
         this.router.navigate([`editPlayer/${userId}`])
     }
-    gotoClubList() {
-        this.router.navigate(['/clubs']);
+
+    deletePlayer(userId: number) {
+        this.playerService.delete(userId).subscribe(() => {
+            // deleting and refreshing
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate([`clubDetails/${this.id}`]);
+            });
+        });
     }
-
-
 
     loadClubDetails() {
         this.playerService.getAllFromClub(this.id).subscribe(
@@ -52,9 +61,8 @@ export class ClubDetailsComponent {
                 console.error("error while fetching details", error);
             }
         );
-
-
     }
+
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.id = +params['id'];

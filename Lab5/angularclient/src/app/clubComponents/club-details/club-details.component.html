@@ -3,7 +3,7 @@
     <div class="card-body">
         <table class="table table-bordered table-striped" *ngIf="club">
             <tbody>
-            <button type="button" (click)="goToAddPlayer()" class="btn btn-info">Add new club</button>
+            <button type="button" (click)="goToAddPlayer()" class="btn btn-info">Add new player to this club</button>
             <h1>Id klubu: {{club.uuid}}</h1>
             <h1>Nazwa klubu: {{club.name}}</h1>
             <h1>Liczba gwiazdek{{club.stars}}</h1>
@@ -11,6 +11,7 @@
             <tr *ngFor="let player of players?.players">
                 <td>{{ player.name}}</td>
                 <td><button type="button" (click)="goToEditPlayer(id)" class="btn btn-info">Edit</button> <td>
+                <td><button type="button" (click)="deletePlayer(player.id)" class="btn btn-info">Delete</button> <td>
             </tr>
             </tbody>
         </table>
