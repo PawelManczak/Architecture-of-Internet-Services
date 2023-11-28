@@ -1,0 +1,18 @@
+<div class="card my-5" >
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped" *ngIf="club">
+            <tbody>
+            <button type="button" (click)="goToAddPlayer()" class="btn btn-info">Add new club</button>
+            <h1>Id klubu: {{club.uuid}}</h1>
+            <h1>Nazwa klubu: {{club.name}}</h1>
+            <h1>Liczba gwiazdek{{club.stars}}</h1>
+            <h1>Gracze</h1>
+            <tr *ngFor="let player of players?.players">
+                <td>{{ player.name}}</td>
+                <td><button type="button" (click)="goToEditPlayer(id)" class="btn btn-info">Edit</button> <td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

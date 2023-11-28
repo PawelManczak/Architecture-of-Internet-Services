@@ -11,12 +11,13 @@ import {PutPlayer} from "../player-model/put-player";
 })
 export class PlayerFormComponent {
   player: PutPlayer;
-
+  id: number | undefined
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: PlayerService) {
     this.player = new PutPlayer();
+
   }
 
   onSubmit() {
@@ -25,5 +26,12 @@ export class PlayerFormComponent {
 
   gotoUserList() {
     this.router.navigate(['/users']);
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.player.clubId = this.id
+    });
   }
 }

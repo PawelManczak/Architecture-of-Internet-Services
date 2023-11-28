@@ -32,6 +32,7 @@ export class ClubService {
     return this.http.put<PutPlayer>(this.clubUrl, player );
   }
 
+
   public update(player: PatchClubRequest){
     return this.http.patch(this.clubUrl, player);
   }

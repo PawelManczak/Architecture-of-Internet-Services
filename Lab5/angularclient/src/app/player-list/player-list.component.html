@@ -10,9 +10,11 @@
       </thead>
       <tbody>
       <tr *ngFor="let player of players">
-        <td>{{ player.uuid }}</td>
+        <td>{{ player.id }}</td>
         <td>{{ player.name }}</td>
         <td><a href="mailto:{{ player.clubName}}">{{ player.clubName }}</a></td>
+        <td> <button type="button" (click)="goToDetails(player.id)" class="btn btn-info">Go to details</button></td>
+
       </tr>
       </tbody>
     </table>

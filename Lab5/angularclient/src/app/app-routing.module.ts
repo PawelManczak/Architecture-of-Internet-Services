@@ -5,14 +5,21 @@ import {PlayerFormComponent} from "./player-form/player-form.component";
 import {ClubListComponent} from "./clubComponents/club-list/club-list.component";
 import {AddNewClubFormComponent} from "./clubComponents/add-new-club-form/add-new-club-form.component";
 import {EditClubFormComponent} from "./clubComponents/edit-club-form/edit-club-form.component";
+import {ClubDetailsComponent} from "./clubComponents/club-details/club-details.component";
+import {PlayerDetailsComponent} from "./player-details/player-details.component";
+import {PlayerEditFormComponent} from "./player-edit-form/player-edit-form.component";
 
 
 const routes: Routes = [
   { path: 'users', component: PlayerListComponent },
-  { path: 'adduser', component: PlayerFormComponent },
+  { path: 'adduser/:id', component: PlayerFormComponent },
   { path: 'clubs', component: ClubListComponent },
   { path: 'addClub', component: AddNewClubFormComponent },
-  { path: 'editClub/:id', component: EditClubFormComponent}
+  { path: 'editClub/:id', component: EditClubFormComponent},
+  { path: 'clubDetails/:id', component: ClubDetailsComponent},
+  { path: 'playerDetails/:id', component: PlayerDetailsComponent},
+  { path: 'editPlayer/:id', component: PlayerEditFormComponent},
+
 ];
 
 @NgModule({

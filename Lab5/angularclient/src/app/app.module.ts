@@ -11,6 +11,9 @@ import {PlayerService} from "./services/player-service.service";
 import { ClubListComponent } from './clubComponents/club-list/club-list.component';
 import { AddNewClubFormComponent } from './clubComponents/add-new-club-form/add-new-club-form.component';
 import { EditClubFormComponent } from './clubComponents/edit-club-form/edit-club-form.component';
+import { ClubDetailsComponent } from './clubComponents/club-details/club-details.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { PlayerEditFormComponent } from './player-edit-form/player-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { EditClubFormComponent } from './clubComponents/edit-club-form/edit-club
     PlayerFormComponent,
     ClubListComponent,
     AddNewClubFormComponent,
-    EditClubFormComponent
+    EditClubFormComponent,
+    ClubDetailsComponent,
+    PlayerDetailsComponent,
+    PlayerEditFormComponent
   ],
   imports: [
     BrowserModule,

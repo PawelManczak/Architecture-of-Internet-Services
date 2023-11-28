@@ -1,10 +1,10 @@
 export class Player {
-  uuid: number;
+  id: number;
   name: string;
   clubName: string;
 
   constructor() {
-    this.uuid = 0;
+    this.id = 0;
     this.name = '';
     this.clubName = '';
   }

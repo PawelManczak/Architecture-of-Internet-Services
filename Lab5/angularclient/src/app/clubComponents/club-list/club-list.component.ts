@@ -24,6 +24,10 @@ export class ClubListComponent {
   goToEditClubForm(id:number){
     this.router.navigate(['/editClub/' + id.toString()]);
   }
+
+  goToDetails(id:number){
+    this.router.navigate(['/clubDetails/' + id.toString()]);
+  }
   ngOnInit() {
     this.clubService.findAll().subscribe(data => {
       this.clubs = data;
