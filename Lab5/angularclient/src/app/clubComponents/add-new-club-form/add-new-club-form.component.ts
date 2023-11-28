@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
-import {PutClub} from "../club-model/put-club";
+import {PutClub} from "../../club-model/put-club";
 import {Router} from "@angular/router";
-import {PlayerService} from "../services/player-service.service";
-import {PutPlayer} from "../player-model/put-player";
-import {ClubService} from "../services/club-service.service";
+import {ClubService} from "../../services/club-service.service";
 
 @Component({
     selector: 'app-add-new-club-form',

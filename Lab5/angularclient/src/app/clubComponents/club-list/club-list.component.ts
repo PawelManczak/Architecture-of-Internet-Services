@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {Player} from "../player-model/player";
-import {PlayerService} from "../services/player-service.service";
-import {Club} from "../club-model/club";
-import {ClubService} from "../services/club-service.service";
+import {Player} from "../../player-model/player";
+import {PlayerService} from "../../services/player-service.service";
+import {Club} from "../../club-model/club";
+import {ClubService} from "../../services/club-service.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -18,8 +18,11 @@ export class ClubListComponent {
   }
 
   deleteClub(id: number){
-    console.log(id)
     this.clubService.delete(id).subscribe(result => this.gotoClubList());
+  }
+
+  goToEditClubForm(id:number){
+    this.router.navigate(['/editClub/' + id.toString()]);
   }
   ngOnInit() {
     this.clubService.findAll().subscribe(data => {

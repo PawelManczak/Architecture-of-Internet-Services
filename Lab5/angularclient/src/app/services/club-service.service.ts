@@ -4,6 +4,8 @@ import {map, Observable} from "rxjs";
 import {Club, GetClubsResponse} from "../club-model/club";
 import {PutPlayer} from "../player-model/put-player";
 import {PutClub} from "../club-model/put-club";
+import {ClubDetails} from "../club-model/club-details";
+import {PatchClubRequest} from "../club-model/patch-club-request";
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +22,17 @@ export class ClubService {
     );
   }
 
+  public findOne(id: Number): Observable<ClubDetails>{
+    return this.http.get<ClubDetails>(`${this.clubUrl}${id.toString()}`)
+  }
   public delete(id: Number){
     return this.http.delete(`${this.clubUrl}${id.toString()}`);
   }
   public save(player: PutClub): Observable<PutPlayer> {
-
     return this.http.put<PutPlayer>(this.clubUrl, player );
+  }
+
+  public update(player: PatchClubRequest){
+    return this.http.patch(this.clubUrl, player);
   }
 }

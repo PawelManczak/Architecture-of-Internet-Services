@@ -8,8 +8,9 @@ import { PlayerFormComponent } from './player-form/player-form.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {PlayerService} from "./services/player-service.service";
-import { ClubListComponent } from './club-list/club-list.component';
-import { AddNewClubFormComponent } from './add-new-club-form/add-new-club-form.component';
+import { ClubListComponent } from './clubComponents/club-list/club-list.component';
+import { AddNewClubFormComponent } from './clubComponents/add-new-club-form/add-new-club-form.component';
+import { EditClubFormComponent } from './clubComponents/edit-club-form/edit-club-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AddNewClubFormComponent } from './add-new-club-form/add-new-club-form.c
     PlayerListComponent,
     PlayerFormComponent,
     ClubListComponent,
-    AddNewClubFormComponent
+    AddNewClubFormComponent,
+    EditClubFormComponent
   ],
   imports: [
     BrowserModule,

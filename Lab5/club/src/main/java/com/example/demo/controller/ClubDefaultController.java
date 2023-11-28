@@ -49,7 +49,6 @@ public class ClubDefaultController implements ClubController {
 
     @Override
     public void deleteClub(long id) {
-        System.out.println("CHUASJSDAJSDA");
         service.delete(id);
     }
 }
