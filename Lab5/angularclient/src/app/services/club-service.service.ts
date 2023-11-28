@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map, Observable} from "rxjs";
 import {Club, GetClubsResponse} from "../club-model/club";
+import {PutPlayer} from "../player-model/put-player";
+import {PutClub} from "../club-model/put-club";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +22,9 @@ export class ClubService {
 
   public delete(id: Number){
     return this.http.delete(`${this.clubUrl}${id.toString()}`);
+  }
+  public save(player: PutClub): Observable<PutPlayer> {
+
+    return this.http.put<PutPlayer>(this.clubUrl, player );
   }
 }

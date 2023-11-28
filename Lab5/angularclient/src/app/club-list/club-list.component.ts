@@ -29,4 +29,8 @@ export class ClubListComponent {
   gotoClubList() {
     this.router.navigate(['/clubs']);
   }
+
+  goToNewClubForm(){
+    this.router.navigate(['/addClub']);
+  }
 }
