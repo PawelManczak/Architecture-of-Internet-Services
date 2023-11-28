@@ -10,7 +10,7 @@
             <h1>Gracze</h1>
             <tr *ngFor="let player of players?.players">
                 <td>{{ player.name}}</td>
-                <td><button type="button" (click)="goToEditPlayer(id)" class="btn btn-info">Edit</button> <td>
+                <td><button type="button" (click)="goToEditPlayer(player.id)" class="btn btn-info">Edit</button> <td>
                 <td><button type="button" (click)="deletePlayer(player.id)" class="btn btn-info">Delete</button> <td>
             </tr>
             </tbody>

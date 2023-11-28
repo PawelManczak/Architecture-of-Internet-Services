@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'editClub/:id', component: EditClubFormComponent},
   { path: 'clubDetails/:id', component: ClubDetailsComponent},
   { path: 'playerDetails/:id', component: PlayerDetailsComponent},
-  { path: 'editPlayer/:id', component: PlayerEditFormComponent},
+  { path: 'editPlayer/:id/:clubId', component: PlayerEditFormComponent},
 
 ];
 

@@ -16,6 +16,7 @@ export class PlayerEditFormComponent {
   playerDetails: PlayerDetails | undefined;
   player: PatchPlayerRequest | undefined;
   id: number = -1;
+  clubId: number = -1;
 
   constructor(
       private route: ActivatedRoute,
@@ -25,7 +26,8 @@ export class PlayerEditFormComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id = +params['id']; // Konwertuj parametr 'id' na liczbę
+      this.id = +params['id'];
+      this.clubId = +params['clubId']
       this.loadClubDetails();
     });
   }
@@ -34,7 +36,7 @@ export class PlayerEditFormComponent {
      this.playerService.findOne(this.id).subscribe(
         (data: PlayerDetails) =>{
           this.playerDetails = data;
-          this.player = new PatchPlayerRequest(this.playerDetails.uuid, this.playerDetails.name, this.id, this.playerDetails.overall);
+          this.player = new PatchPlayerRequest(this.playerDetails.uuid, this.playerDetails.name, this.clubId, this.playerDetails.overall);
         }
     )
   }

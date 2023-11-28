@@ -32,7 +32,7 @@ export class ClubDetailsComponent {
     }
 
     goToEditPlayer(userId: number) {
-        this.router.navigate([`editPlayer/${userId}`])
+        this.router.navigate([`editPlayer/${userId}/${this.id}`])
     }
 
     deletePlayer(userId: number) {

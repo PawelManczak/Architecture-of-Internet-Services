@@ -21,11 +21,11 @@ export class PlayerFormComponent {
   }
 
   onSubmit() {
-    this.userService.save(this.player).subscribe(result => this.gotoUserList());
+    this.userService.save(this.player).subscribe(result => this.goToClubDetails());
   }
 
-  gotoUserList() {
-    this.router.navigate(['/users']);
+  goToClubDetails() {
+    this.router.navigate([`clubDetails/${this.player.clubId}`]);
   }
 
   ngOnInit() {
