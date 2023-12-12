@@ -1,0 +1,25 @@
+version: '3'
+services:
+  player:
+    build: ./player
+    ports:
+      - "8081:8081"
+    networks:
+      - my-network
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "8083:8083"
+    networks:
+      - my-network
+
+  club:
+    build: ./club
+    ports:
+      - "8082:8082"
+    networks:
+      - my-network
+
+networks:
+  my-network:

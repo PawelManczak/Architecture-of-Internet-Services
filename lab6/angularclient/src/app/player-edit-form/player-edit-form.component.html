@@ -1,0 +1,41 @@
+<div class="card my-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm" *ngIf="playerDetails">
+            <div class="form-group">
+                <h1>PlayerId = {{player!!.id}}</h1>
+                <label for="name">Name</label>
+                <input type="text" [(ngModel)]="player!!.name"
+                       class="form-control"
+                       id="name"
+                       name="name"
+                       placeholder="Enter your name"
+                       required #name="ngModel">
+            </div>
+            <div [hidden]="!name.invalid" class="alert alert-danger">name is required</div>
+            <div class="form-group">
+                <label for="clubId">ClubId</label>
+                <input type="number" [(ngModel)]="player!!.clubId"
+                       class="form-control"
+                       id="clubId"
+                       name="clubId"
+                       placeholder="Enter clubId"
+                       required #email="ngModel">
+                <div [hidden]="!email.invalid" class="alert alert-danger">clubId is required</div>
+            </div>
+            <div [hidden]="!name.invalid" class="alert alert-danger">name is required</div>
+            <div class="form-group">
+                <label for="overall">Overall</label>
+                <input type="number" [(ngModel)]="player!!.overall"
+                       class="form-control"
+                       id="overall"
+                       name="overall"
+                       placeholder="Enter overall"
+                       required #email="ngModel">
+                <div [hidden]="!email.invalid" class="alert alert-danger">overall is required</div>
+            </div>
+
+            <button type="submit" [disabled]="!userForm.form.valid"
+                    class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>

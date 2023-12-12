@@ -1,0 +1,25 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <button type="button" (click)="goToNewClubForm()" class="btn btn-info">Add new club</button>
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let club of clubs">
+        <td>{{ club.id }}</td>
+        <td>{{ club.clubName }}</td>
+        <td>
+          <button type="button" (click)="deleteClub(club.id)" class="btn btn-info">Delete</button>
+          <button type="button" (click)="goToEditClubForm(club.id)" class="btn btn-info">Edit</button>
+          <button type="button" (click)="goToDetails(club.id)" class="btn btn-info">Go to details</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
