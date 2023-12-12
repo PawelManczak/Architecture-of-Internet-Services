@@ -20,6 +20,11 @@ services:
      # - "8082:8082"
     networks:
       - my-network
+  angular:
+    build: ./angularclient
+    restart: always
+    ports:
+      - "8087:80"
 
 networks:
   my-network:

@@ -1,11 +1,10 @@
-# Use the official NGINX base image
-FROM nginx:latest
+FROM node:latest as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-# Copy the built Angular app to the NGINX web root
-COPY dist/ /usr/share/nginx/html
-
-# Expose the port that NGINX will run on
+FROM nginx:alpine
+COPY --from=build /app/dist/angularclient /usr/share/nginx/html
 EXPOSE 80
-
-# Start NGINX when the container runs
-CMD ["nginx", "-g", "daemon off;"]
